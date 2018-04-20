@@ -1,6 +1,6 @@
 
- # 功能：依赖bootstrap-table实现treegrid，参照[JS组件系列——自己动手扩展BootstrapTable的treegrid功能
-](http://www.cnblogs.com/landeanfen/p/6924895.html) 例子做了部分修改优化
+ # 功能：依赖bootstrap-table实现treegrid，
+ * 来源：参照[JS组件系列——自己动手扩展BootstrapTable的treegrid功能](http://www.cnblogs.com/landeanfen/p/6924895.html) 例子做了部分改动
  * 作者：lds2013@163.com
  * 日期：2017年10月5日
  * 修改：2018年4月20日
