@@ -13,6 +13,10 @@
 
  # 用法： 
 ```
+<script src="./bootstrap/js/bootstrap.min.js"></script>
+<script src="./bootstrap-table/bootstrap-table.min.js"></script>
+<script src="./src/bootstrap-treegrid.min.js"></script>
+
 $('#tb').bootstrapTable({
         method: 'post',
         url: '/HR/HrDept/GetList',
