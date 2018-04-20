@@ -1,39 +1,40 @@
 
- # ¹¦ÄÜ£ºÒÀÀµbootstrap-tableÊµÏÖtreegrid£¬²ÎÕÕhttp://www.cnblogs.com/landeanfen/p/6924895.htmlÀı×Ó×öÁË²¿·ÖĞŞ¸ÄÓÅ»¯
- * ×÷Õß£ºlds2013@163.com
- * ÈÕÆÚ£º2017Äê10ÔÂ5ÈÕ
- * ĞŞ¸Ä£º2018Äê4ÔÂ20ÈÕ
- # ÄÚÈİ£º
- *       1¡¢Ö§³Ö×Ô¶¨ÒåÊÕËõ¡¢Õ¹¿ªÍ¼±ê£»
- *       2¡¢Ö§³Ö×Ô¶¨Òå¸¸¼¶ID´«Èë£¬Ä¬ÈÏParentId£»
- *       3¡¢¸¸¼¶ID×î¶¥²ã¸ÄÎª0£»
- *       4¡¢ĞŞ¸Ä×îºó×Ó¼¶Ç°µÄĞ¡Í¼±ê£»
- *       5¡¢Ö§³ÖÕ¹¿ª¡¢ÊÕËõÊÂ¼ş£»
+ # åŠŸèƒ½ï¼šä¾èµ–bootstrap-tableå®ç°treegridï¼Œå‚ç…§[JSç»„ä»¶ç³»åˆ—â€”â€”è‡ªå·±åŠ¨æ‰‹æ‰©å±•BootstrapTableçš„treegridåŠŸèƒ½
+](http://www.cnblogs.com/landeanfen/p/6924895.html) ä¾‹å­åšäº†éƒ¨åˆ†ä¿®æ”¹ä¼˜åŒ–
+ * ä½œè€…ï¼šlds2013@163.com
+ * æ—¥æœŸï¼š2017å¹´10æœˆ5æ—¥
+ * ä¿®æ”¹ï¼š2018å¹´4æœˆ20æ—¥
+ # å†…å®¹ï¼š
+ *       1ã€æ”¯æŒè‡ªå®šä¹‰æ”¶ç¼©ã€å±•å¼€å›¾æ ‡ï¼›
+ *       2ã€æ”¯æŒè‡ªå®šä¹‰çˆ¶çº§IDä¼ å…¥ï¼Œé»˜è®¤ParentIdï¼›
+ *       3ã€çˆ¶çº§IDæœ€é¡¶å±‚æ”¹ä¸º0ï¼›
+ *       4ã€ä¿®æ”¹æœ€åå­çº§å‰çš„å°å›¾æ ‡ï¼›
+ *       5ã€æ”¯æŒå±•å¼€ã€æ”¶ç¼©äº‹ä»¶ï¼›
 
- # ÓÃ·¨£º 
+ # ç”¨æ³•ï¼š 
 ```
 $('#tb').bootstrapTable({
         method: 'post',
         url: '/HR/HrDept/GetList',
-        singleSelect: true,//µ¥ĞĞÑ¡Ôñ
-        clickToSelect: true,//µã»÷ĞĞÊ±×Ô¶¯Ñ¡Ôñ
-        striped: true,//ÊÇ·ñÏÔÊ¾ĞĞ¼ä¸ôÉ«
-        treeView: true,//ÊÇ·ñÏÔÊ¾Ê÷ĞÎÊÓÍ¼
-        treeId: "DeptID",//¶¨Òå¹Ø¼ü×Ö¶ÎÀ´±êÊ¶Ê÷½Úµã
-        treeField: "DeptName",//¶¨ÒåÊ÷½Úµã×Ö¶Î
-        parentId: "MasterID", //¶¨Òå¸¸¼¶ID×Ö¶Î
-        treeRootLevel: 1,//Ê÷¸ùµÄ¼¶±ğ
-        treeCollapseAll: false,//ÊÇ·ñÈ«²¿ÕÛµş£¬Ä¬ÈÏÕÛµş 
-        uniqueId: "DeptID", //Ã¿Ò»ĞĞµÄÎ¨Ò»±êÊ¶£¬Ò»°ãÎªÖ÷¼üÁĞ
+        singleSelect: true,//å•è¡Œé€‰æ‹©
+        clickToSelect: true,//ç‚¹å‡»è¡Œæ—¶è‡ªåŠ¨é€‰æ‹©
+        striped: true,//æ˜¯å¦æ˜¾ç¤ºè¡Œé—´éš”è‰²
+        treeView: true,//æ˜¯å¦æ˜¾ç¤ºæ ‘å½¢è§†å›¾
+        treeId: "DeptID",//å®šä¹‰å…³é”®å­—æ®µæ¥æ ‡è¯†æ ‘èŠ‚ç‚¹
+        treeField: "DeptName",//å®šä¹‰æ ‘èŠ‚ç‚¹å­—æ®µ
+        parentId: "MasterID", //å®šä¹‰çˆ¶çº§IDå­—æ®µ
+        treeRootLevel: 1,//æ ‘æ ¹çš„çº§åˆ«
+        treeCollapseAll: false,//æ˜¯å¦å…¨éƒ¨æŠ˜å ï¼Œé»˜è®¤æŠ˜å  
+        uniqueId: "DeptID", //æ¯ä¸€è¡Œçš„å”¯ä¸€æ ‡è¯†ï¼Œä¸€èˆ¬ä¸ºä¸»é”®åˆ—
         columns:
         [
           { field: 'ck', checkbox: true },
-          { field: 'DeptID', title: '»ú¹¹ID'},
-          { field: 'MasterID', title: 'ÉÏ¼¶ID', visible: false },
-          { field: 'DeptName', title: '»ú¹¹Ãû³Æ' }
+          { field: 'DeptID', title: 'æœºæ„ID'},
+          { field: 'MasterID', title: 'ä¸Šçº§ID', visible: false },
+          { field: 'DeptName', title: 'æœºæ„åç§°' }
         ]
        });
 ```
 
- * ×¢ÒâÊÂÏî£ºÔİÎŞ
+ * æ³¨æ„äº‹é¡¹ï¼šæš‚æ— 
  *           
