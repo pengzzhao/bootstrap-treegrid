@@ -26,7 +26,7 @@ $('#tb').bootstrapTable({
         treeView: true,//是否显示树形视图
         treeId: "DeptID",//定义关键字段来标识树节点
         treeField: "DeptName",//定义树节点字段
-        parentId: "MasterID", //定义父级ID字段
+        treeParentId: "MasterID", //定义父级ID字段
         treeRootLevel: 1,//树根的级别
         treeCollapseAll: false,//是否全部折叠，默认折叠 
         uniqueId: "DeptID", //每一行的唯一标识，一般为主键列

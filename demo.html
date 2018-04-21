@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>bootstrap-treegrid Demo</title>
+    <meta charset="utf-8" />
+    <link href="dist/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="dist/bootstrap-table/bootstrap-table.min.css" rel="stylesheet" />
+</head>
+<body>
+    <table id="tb"></table>
+    
+    <script src="dist/jquery/jquery-1.11.3.min.js"></script>
+    <script src="dist/bootstrap/js/bootstrap.min.js"></script>
+    <script src="dist/bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="dist/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+    <script src="src/bootstrap-treegrid.min.js"></script>
+
+    <script>
+        $(function () {
+            var tempData = [
+                { "DeptID": 1, "DeptName": "集团总部", "MasterID": 0, "Status": 1 },
+                { "DeptID": 2, "DeptName": "研发中心", "MasterID": 1, "Status": 1 },
+                { "DeptID": 3, "DeptName": "软件开发部", "MasterID": 2, "Status": 1 },
+                { "DeptID": 4, "DeptName": "硬件开发部", "MasterID": 2, "Status": 1 },
+                { "DeptID": 5, "DeptName": "商务部", "MasterID": 1, "Status": 1 },
+                { "DeptID": 6, "DeptName": "华南区", "MasterID": 5, " Status": 1 },
+                { "DeptID": 7, "DeptName": "华北区", "MasterID": 5, "Status": 1 },
+                { "DeptID": 8, "DeptName": "客服部", "MasterID": 1, "Status": 1 }
+            ];
+
+            $('#tb').bootstrapTable({
+                //method: 'post',
+                //url: '/HR/HrDept/GetList',
+                data: tempData,
+                singleSelect: true,//单行选择
+                clickToSelect: true,//点击行时自动选择
+                striped: true,//是否显示行间隔色
+                treeView: true,//是否显示树形视图
+                treeId: "DeptID",//定义关键字段来标识树节点
+                treeField: "DeptName",//定义树节点字段
+                treeParentId: "MasterID", //定义父级ID字段
+                treeRootLevel: 1,//树根的级别
+                treeCollapseAll: false,//是否全部折叠，默认折叠
+                uniqueId: "DeptID", //每一行的唯一标识，一般为主键列
+                columns:
+                [
+                  { field: 'ck', checkbox: true },
+                  { field: 'DeptID', title: '机构ID' },
+                  { field: 'MasterID', title: '上级ID', visible: false },
+                  { field: 'DeptName', title: '机构名称' },
+                  { field: 'Status', title: '状态' }
+                ]
+            });
+        });
+    </script>
+
+</body>
+</html>
