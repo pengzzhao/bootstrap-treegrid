@@ -41,4 +41,7 @@ $('#tb').bootstrapTable({
 ```
 
  * 注意事项：暂无
- *           
+          
+
+# 效果图
+![效果图](https://gitee.com/uploads/images/2018/0421/135130_6a98b4df_342448.jpeg "grid.jpg")
