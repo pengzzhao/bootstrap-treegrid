@@ -8,6 +8,7 @@
  *           3、父级ID最顶层改为0；
  *           4、修改最后子级前的小图标；
  *           5、支持展开、收缩事件；
+ *           6、支持定义是否层叠选中状态(选中父级，子级全部选中)的开关；
 
  *用法： $('#tb').bootstrapTable({
                         method: 'post',
@@ -18,7 +19,7 @@
                         treeView: true,//是否显示树形视图
                         treeId: "DeptID",//定义关键字段来标识树节点
                         treeField: "DeptName",//定义树节点字段
-                        parentId: "MasterID", //定义父级ID字段
+                        treeParentId: "MasterID", //定义父级ID字段
                         treeRootLevel: 1,//树根的级别
                         treeCollapseAll: false,//是否全部折叠，默认折叠 
                         uniqueId: "DeptID", //每一行的唯一标识，一般为主键列
@@ -221,7 +222,7 @@
     BootstrapTable.prototype.initPagination = function () {
         //理论情况下，treegrid是不支持分页的，所以默认分页参数为false
         if (this.options.treeView) {
-            this.options.pagination = false;
+            //this.options.pagination = false;
         }
         //调用“父类”的“虚方法”
         _initPagination.apply(this, Array.prototype.slice.apply(arguments));
@@ -506,6 +507,13 @@
             if (e.type === 'click' && that.options.clickToSelect && column.clickToSelect) {
                 var $selectItem = $tr.find(sprintf('[name="%s"]', that.options.selectItemName));
                 if ($selectItem.length) {
+                    //修复先勾选，再收缩父级，然后再勾选另一个选项，导致原收缩项里还是保持选中状态，最终导致获取选中项的bug
+                    //解决思路：先把已选中的项取消，最后再选中点击的项
+                    $.each(that.data, function (index, item) {
+                        if (item.ck != undefined && item.ck == true) {
+                            item.ck = false;
+                        }
+                    });
                     $selectItem[0].click(); // #144: .trigger('click') bug
                 }
             }
@@ -594,15 +602,18 @@
                 });
                 that.$selectItem.filter(':checked').not(this).prop('checked', false);
             }
-            var child = getAllChild(that.options.treeParentId, row, that.options.data, that.options.treeId);
-            $.each(child, function (i, c) {
-                $.each(that.data, function (index, item) {
-                    if (item[that.options.treeId] == c[that.options.treeId]) {
-                        item.checked = checked ? true : false;
-                        return;
-                    }
+            //层叠选中状态(选中父级，子级全部选中)
+            if (!that.options.singleSelect && that.options.cascadeCheck) {
+                var child = getAllChild(that.options.treeParentId, row, that.options.data, that.options.treeId);
+                $.each(child, function (i, c) {
+                    $.each(that.data, function (index, item) {
+                        if (item[that.options.treeId] == c[that.options.treeId]) {
+                            item.checked = checked ? true : false;
+                            return;
+                        }
+                    });
                 });
-            });
+            }
             that.options.data = that.data;
             that.initBody(true);
             that.updateSelected();
@@ -697,6 +708,7 @@
         treeParentId: "ParentId",
         treeRootLevel: 1,//根节点序号
         treeCollapseAll: true,//是否全部折叠，默认折叠
+        cascadeCheck: true,//是否层叠选中状态(选中父级，子级全部选中)
         collapseIcon: "glyphicon glyphicon-plus",//折叠样式
         expandIcon: "glyphicon glyphicon-minus",//展开样式
         lastIcon: "glyphicon glyphicon-hand-right"//叶子节点样式
